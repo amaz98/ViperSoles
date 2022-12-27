@@ -13,7 +13,7 @@ import {
   TextEyeHideIcon,
 } from "./styles";
 import { Image, View } from "react-native";
-import { Text, Box, Heading, Center, VStack } from "native-base";
+import { Text, Box, Heading, Center, VStack, Input } from "native-base";
 import logo from "./assets/adaptive-icon1.png";
 import { useFonts } from "expo-font";
 import { Formik } from "formik";
@@ -46,6 +46,18 @@ function LoginScreen() {
                 label="Email Address"
                 icon="mail"
                 placeholder="Enter Email"
+                onChangeText={handleChange("email")}
+                onBlur={handleBlur("email")}
+                value={values.email}
+                keyBoardType="email-address"
+              />
+              <InputText
+                label="Password"
+                icon="lock"
+                placeholder="Enter Password"
+                onChangeText={handleChange("password")}
+                onBlur={handleBlur("password")}
+                value={values.password}
               />
             </FormBox>
           )}
@@ -58,12 +70,10 @@ function LoginScreen() {
 const InputText = ({ label, icon, ...props }) => {
   return (
     <View>
+      <LoginInputLabel>{label}</LoginInputLabel>
+      <LoginTextInput {...props} />
       <LoginInputIcon>
-        <LoginInputLabel>{label}</LoginInputLabel>
-        <LoginTextInput {...props} />
-        <LoginInputIcon>
-          <Octicons name={icon} size={30} />
-        </LoginInputIcon>
+        <Octicons name={icon} size={30} />
       </LoginInputIcon>
     </View>
   );
