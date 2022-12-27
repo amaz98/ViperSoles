@@ -25,9 +25,61 @@ export const Logo = styled.Image`
 `;
 
 export const LoginTitle = styled.Text`
-  font-size: 30px;
+  font-size: 40px;
   text-align: center;
   font-weight: bold;
   color: #000000;
   padding: 10px;
+  fontfamily: "PTSansNarrow-Regular";
+`;
+
+export const FormBox = styled.View`
+  width: 90%;
+`;
+
+export const LoginTextInput = styled.TextInput`
+  background-color: #ccc;
+  padding: 10px;
+  padding-right:10px;
+  padding-left: 55px;
+  font-size: 14px;
+  height: 50px;
+  margin-top: 10px;
+  width: 300px;
+  resizeMode="none"
+  borderBottomWidth: 1.0;
+  borderColor: #000000;
+  borderRadius: 7px;
+
+`;
+
+export const LoginInputLabel = styled.Text`
+  color: #ccc;
+  font-size: 12px;
+  text-align: left;
+`;
+
+export const LoginInputIcon = styled.View`
+  left: 15px;
+  top: 35px;
+  position: absolute;
+  z-index: 1;
+`;
+
+export const TextEyeHideIcon = styled.TouchableOpacity`
+  left: 15px;
+  top: 38px;
+  position: absolute;
+  z-index: 1;
+`;
+
+export const LoginButton = styled.TouchableOpacity`
+  padding: 15px;
+  justify-content: center;
+  margin-vertical: 5px;
+  height: 60px;
+`;
+
+export const LoginButtonText = styled.Text`
+  font-size: 15px;
 `;
