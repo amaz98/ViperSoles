@@ -38,46 +38,52 @@ export const FormBox = styled.View`
 `;
 
 export const LoginTextInput = styled.TextInput`
-  background-color: #ccc;
+  background-color: #EEEEEE;
   padding: 10px;
-  padding-right:10px;
+  padding-right:27px;
   padding-left: 55px;
   font-size: 14px;
   height: 50px;
-  margin-top: 10px;
-  width: 300px;
+  width: 320px;
   resizeMode="none"
   borderBottomWidth: 1.0;
+  borderWidth:2px;
   borderColor: #000000;
   borderRadius: 7px;
-
 `;
 
 export const LoginInputLabel = styled.Text`
-  color: #ccc;
+  color: #000000;
   font-size: 12px;
   text-align: left;
+  margin-top: 10px;
+  margin-bottom: 3px;
 `;
 
 export const LoginInputIcon = styled.View`
   left: 15px;
-  top: 35px;
+  top: 37px;
   position: absolute;
   z-index: 1;
 `;
 
 export const TextEyeHideIcon = styled.TouchableOpacity`
-  left: 15px;
-  top: 38px;
+  right: 15px;
+  top: 43px;
   position: absolute;
   z-index: 1;
 `;
 
 export const LoginButton = styled.TouchableOpacity`
-  padding: 15px;
   justify-content: center;
-  margin-vertical: 5px;
-  height: 60px;
+  height: 40px;
+  width: 320px;
+  background-color: #000000;
+  resizeMode="none"
+  borderWidth:2px;
+  borderRadius: 20px;
+  margin-top:20px;
+  overflow: hidden;
 `;
 
 export const LoginButtonText = styled.Text`

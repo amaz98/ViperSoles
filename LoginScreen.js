@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyledContainer,
   InnerContainer,
@@ -12,18 +12,19 @@ import {
   LoginInputIcon,
   TextEyeHideIcon,
 } from "./styles";
-import { Image, View } from "react-native";
+import { Image, View, TouchableOpacity } from "react-native";
 import { Text, Box, Heading, Center, VStack, Input } from "native-base";
 import logo from "./assets/adaptive-icon1.png";
 import { useFonts } from "expo-font";
 import { Formik } from "formik";
-import { Octicons } from "@expo/vector-icons";
+import { Octicons, Ionicons } from "@expo/vector-icons";
 
 function LoginScreen() {
   const [loaded] = useFonts({
     PTSansNarrowReg: require("./assets/fonts/PTSansNarrow-Regular.ttf"),
     PTSansNarrowBold: require("./assets/fonts/PTSansNarrow-Bold.ttf"),
   });
+  const [showPassword, setShowPassword] = useState(true);
   if (!loaded) {
     return null;
   }
@@ -58,7 +59,16 @@ function LoginScreen() {
                 onChangeText={handleChange("password")}
                 onBlur={handleBlur("password")}
                 value={values.password}
+                secureTextEntry={showPassword}
+                passwordPresent={true}
+                setShowPassword={setShowPassword}
+                showPassword={showPassword}
               />
+              <LoginButton onPress={handleSubmit}>
+                <Text style={{ textAlign: "center", color: "white" }}>
+                  Login
+                </Text>
+              </LoginButton>
             </FormBox>
           )}
         </Formik>
@@ -67,7 +77,14 @@ function LoginScreen() {
   );
 }
 
-const InputText = ({ label, icon, ...props }) => {
+const InputText = ({
+  label,
+  icon,
+  passwordPresent,
+  setShowPassword,
+  showPassword,
+  ...props
+}) => {
   return (
     <View>
       <LoginInputLabel>{label}</LoginInputLabel>
@@ -75,6 +92,19 @@ const InputText = ({ label, icon, ...props }) => {
       <LoginInputIcon>
         <Octicons name={icon} size={30} />
       </LoginInputIcon>
+      {passwordPresent && (
+        <TextEyeHideIcon
+          onPress={() => {
+            setShowPassword(!showPassword);
+          }}
+        >
+          <Ionicons
+            name={showPassword ? "md-eye-off" : "md-eye"}
+            size={20}
+            color={"#FF442A"}
+          />
+        </TextEyeHideIcon>
+      )}
     </View>
   );
 };
