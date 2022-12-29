@@ -11,20 +11,28 @@ import {
   LoginInputLabel,
   LoginInputIcon,
   TextEyeHideIcon,
+  EmailError,
 } from "./styles";
-import { Image, View, TouchableOpacity } from "react-native";
+import { Image, View, TouchableOpacity, Linking } from "react-native";
 import { Text, Box, Heading, Center, VStack, Input } from "native-base";
 import logo from "./assets/adaptive-icon1.png";
 import { useFonts } from "expo-font";
 import { Formik } from "formik";
 import { Octicons, Ionicons } from "@expo/vector-icons";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-function LoginScreen() {
+function LoginScreen({ navigation }) {
   const [loaded] = useFonts({
     PTSansNarrowReg: require("./assets/fonts/PTSansNarrow-Regular.ttf"),
     PTSansNarrowBold: require("./assets/fonts/PTSansNarrow-Bold.ttf"),
   });
   const [showPassword, setShowPassword] = useState(true);
+  const [passwordText, setPasswordText] = useState(true);
+  const [emailText, setEmailText] = useState(true);
+  const handlePress = () => {
+    navigation.navigate("SignUp");
+  };
   if (!loaded) {
     return null;
   }
@@ -39,6 +47,7 @@ function LoginScreen() {
           initialValues={{ email: "", password: "" }}
           onSubmit={(values) => {
             console.log(values);
+            console.log("Login Pressed");
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -51,6 +60,8 @@ function LoginScreen() {
                 onBlur={handleBlur("email")}
                 value={values.email}
                 keyBoardType="email-address"
+                emailText={emailText}
+                emailPresent={true}
               />
               <InputText
                 label="Password"
@@ -63,12 +74,53 @@ function LoginScreen() {
                 passwordPresent={true}
                 setShowPassword={setShowPassword}
                 showPassword={showPassword}
+                passwordText={passwordText}
               />
-              <LoginButton onPress={handleSubmit}>
+              <LoginButton
+                onPress={() => {
+                  if (values.email != "" && values.password != "") {
+                    handleSubmit();
+                    setEmailText(true);
+                    setPasswordText(true);
+                  } else if (values.email === "" && values.password === "") {
+                    setEmailText(false);
+                    setPasswordText(false);
+                  } else if (values.email === "") {
+                    setEmailText(false);
+                    setPasswordText(true);
+                  } else if (values.password === "") {
+                    setPasswordText(false);
+                    setEmailText(true);
+                  }
+                }}
+              >
                 <Text style={{ textAlign: "center", color: "white" }}>
                   Login
                 </Text>
               </LoginButton>
+              <View>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    marginRight: 10,
+                    marginTop: 40,
+                  }}
+                >
+                  Don't have an account?
+                </Text>
+                <TouchableOpacity onPress={handlePress}>
+                  <Text
+                    style={{
+                      textAlign: "center",
+                      marginRight: 10,
+                      color: "#949494",
+                      textDecorationLine: "underline",
+                    }}
+                  >
+                    Sign up for free!
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </FormBox>
           )}
         </Formik>
@@ -81,8 +133,11 @@ const InputText = ({
   label,
   icon,
   passwordPresent,
+  emailPresent,
   setShowPassword,
   showPassword,
+  passwordText,
+  emailText,
   ...props
 }) => {
   return (
@@ -104,6 +159,10 @@ const InputText = ({
             color={"#FF442A"}
           />
         </TextEyeHideIcon>
+      )}
+      {!emailText && emailPresent && <EmailError>[Email Required]</EmailError>}
+      {!passwordText && passwordPresent && (
+        <EmailError>[Password Required]</EmailError>
       )}
     </View>
   );

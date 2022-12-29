@@ -89,3 +89,8 @@ export const LoginButton = styled.TouchableOpacity`
 export const LoginButtonText = styled.Text`
   font-size: 15px;
 `;
+
+export const EmailError = styled.Text`
+  font-size: 15px;
+  color: #ff3d22;
+`;

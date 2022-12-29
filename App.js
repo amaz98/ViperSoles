@@ -3,32 +3,12 @@ import * as SplashScreen from "expo-splash-screen";
 import LoginScreen from "./LoginScreen.js";
 import { NativeBaseProvider } from "native-base";
 import { useFonts } from "expo-font";
+import NavigateStack from "./app.navigator.js";
 
 const App = () => {
-  /* let [fontsLoaded] = useFonts({
-    "PTSansNarrow-Regular": require("./fonts/PTSansNarrow-Regular.ttf"),
-  });
-
-  useEffect(() => {
-    async function prepare() {
-      await SplashScreen.preventAutoHideAsync();
-    }
-    prepare();
-  }, []);
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
-  }*/
-
   return (
     <NativeBaseProvider>
-      <LoginScreen />
+      <NavigateStack />
     </NativeBaseProvider>
   );
 };
