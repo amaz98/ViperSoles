@@ -282,7 +282,7 @@ function SignUpScreen({ navigation }) {
                 }}
               >
                 <Text style={{ textAlign: "center", color: "white" }}>
-                  Login
+                  Sign Up
                 </Text>
               </LoginButton>
               <View>

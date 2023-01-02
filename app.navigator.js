@@ -17,13 +17,4 @@ const NavigateStack = () => {
   );
 };
 
-// const AppNavigator = () => {
-//   <NavigationContainer>
-//     <Navigator headerMode="none" initialRouteName="Login">
-//       <Screen name="Login" component={Login} />
-//       <Screen name="SignUp" component={SignUp} />
-//     </Navigator>
-//   </NavigationContainer>;
-// };
-
 export default NavigateStack;

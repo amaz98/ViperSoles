@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect, useContext } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import LoginScreen from "./LoginScreen.js";
 import Home from "./Home";
-import AppStack from "./AppStack.js";
 import { NativeBaseProvider } from "native-base";
 import { useFonts } from "expo-font";
 import NavigateStack from "./app.navigator.js";
@@ -13,12 +12,15 @@ import {
   ContextCredentials,
 } from "./components/ContextCredentials.js";
 
-const App = () => {
-  return (
-    <AuthProvider>
-      <AppStack />
-    </AuthProvider>
-  );
-};
+function AppStack() {
+  const { userToken, isLoggedIn } = useContext(ContextCredentials);
+  console.log(userToken);
 
-export default App;
+  return (
+    <NativeBaseProvider>
+      {userToken != null ? <Home /> : <NavigateStack />}
+    </NativeBaseProvider>
+  );
+}
+
+export default AppStack;

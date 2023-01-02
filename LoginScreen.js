@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyledContainer,
   InnerContainer,
@@ -21,8 +21,14 @@ import { Formik } from "formik";
 import { Octicons, Ionicons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  AuthProvider,
+  ContextCredentials,
+} from "./components/ContextCredentials";
 
 function LoginScreen({ navigation }) {
+  const { login, userToken } = useContext(ContextCredentials);
+
   const [loaded] = useFonts({
     PTSansNarrowReg: require("./assets/fonts/PTSansNarrow-Regular.ttf"),
     PTSansNarrowBold: require("./assets/fonts/PTSansNarrow-Bold.ttf"),
@@ -46,8 +52,7 @@ function LoginScreen({ navigation }) {
         <Formik
           initialValues={{ email: "", password: "" }}
           onSubmit={(values) => {
-            console.log(values);
-            console.log("Login Pressed");
+            login();
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
