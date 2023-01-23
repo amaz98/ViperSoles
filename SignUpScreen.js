@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
 import {
   StyledContainer,
   InnerContainer,
@@ -20,8 +21,10 @@ import { Formik } from "formik";
 import { Octicons, Ionicons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ContextCredentials } from "./components/ContextCredentials";
 
-function SignUpScreen({ navigation }) {
+const SignUpScreen = ({ navigation }) => {
+  const { signUp } = useContext(ContextCredentials);
   const [loaded] = useFonts({
     PTSansNarrowReg: require("./assets/fonts/PTSansNarrow-Regular.ttf"),
     PTSansNarrowBold: require("./assets/fonts/PTSansNarrow-Bold.ttf"),
@@ -54,9 +57,27 @@ function SignUpScreen({ navigation }) {
             email: "",
             password: "",
           }}
-          onSubmit={(values) => {
+          onSubmit={async (values) => {
+            try {
+              const response = await axios({
+                method: "post",
+                url: "https://7005-2603-3003-2900-2200-e5f1-112b-862d-c14f.ngrok.io/api/auth/signup",
+                timeout: 100000,
+                data: {
+                  firstname: values.firstName,
+                  lastname: values.lastName,
+                  email: values.email,
+                  password: values.lastName,
+                },
+              }).then(async (response) => {
+                const name = response.data.firstname;
+                await signUp(name);
+              });
+            } catch (err) {
+              console.log(err);
+            }
             console.log(values);
-            console.log("Login Pressed");
+            console.log("Sign Up Pressed");
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -314,7 +335,7 @@ function SignUpScreen({ navigation }) {
       </InnerContainer>
     </StyledContainer>
   );
-}
+};
 
 const InputText = ({
   label,

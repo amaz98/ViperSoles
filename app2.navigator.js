@@ -9,13 +9,13 @@ import { ContextCredentials } from "./components/ContextCredentials";
 
 const Stack = createStackNavigator();
 
-const NavigateStack = () => {
+const NavigateStack2 = () => {
   return (
-    <Stack.Navigator headerMode="none" initialRouteName="SignUp">
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="SignUp" component={SignUp} />
+    <Stack.Navigator headerMode="none" initialRouteName="Home">
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="UserPage" component={UserPage} />
     </Stack.Navigator>
   );
 };
 
-export default NavigateStack;
+export default NavigateStack2;

@@ -12,12 +12,15 @@ import {
   AuthProvider,
   ContextCredentials,
 } from "./components/ContextCredentials.js";
+import { NavigationContainer } from "@react-navigation/native";
 
 const App = () => {
   return (
-    <AuthProvider>
-      <AppStack />
-    </AuthProvider>
+    <NavigationContainer>
+      <AuthProvider>
+        <AppStack />
+      </AuthProvider>
+    </NavigationContainer>
   );
 };
 

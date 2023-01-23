@@ -26,7 +26,7 @@ import {
   ContextCredentials,
 } from "./components/ContextCredentials";
 
-function LoginScreen({ navigation }) {
+const LoginScreen = ({ navigation }) => {
   const { login, userToken } = useContext(ContextCredentials);
 
   const [loaded] = useFonts({
@@ -132,7 +132,7 @@ function LoginScreen({ navigation }) {
       </InnerContainer>
     </StyledContainer>
   );
-}
+};
 
 const InputText = ({
   label,

@@ -5,15 +5,27 @@ export const ContextCredentials = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(null);
+  const [userFirstName, setUserFirstName] = useState("");
 
-  const login = () => {
+  const signUp = async (firstName) => {
+    setUserFirstName(firstName);
+    const firstname = JSON.stringify(firstName);
+    console.log("AsynStorage, setting user's first name as " + firstname);
+    await AsyncStorage.setItem("userFirstName", firstname);
     setUserToken("userToken");
-    AsyncStorage.setItem("userToken", "userToken");
+    await AsyncStorage.setItem("userToken", "userToken");
   };
 
-  const logout = () => {
+  const login = async () => {
+    setUserToken("userToken");
+    await AsyncStorage.setItem("userToken", "userToken");
+  };
+
+  const logout = async () => {
+    await AsyncStorage.removeItem("userToken");
+    await AsyncStorage.removeItem("userFirstName");
     setUserToken(null);
-    AsyncStorage.removeItem("userToken");
+    setUserFirstName("");
   };
 
   const isLoggedIn = async () => {
@@ -33,7 +45,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <ContextCredentials.Provider
-      value={{ isLoggedIn, login, logout, userToken }}
+      value={{ isLoggedIn, signUp, login, logout, userToken, setUserToken }}
     >
       {children}
     </ContextCredentials.Provider>
