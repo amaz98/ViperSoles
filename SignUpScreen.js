@@ -61,7 +61,7 @@ const SignUpScreen = ({ navigation }) => {
             try {
               const response = await axios({
                 method: "post",
-                url: "https://7005-2603-3003-2900-2200-e5f1-112b-862d-c14f.ngrok.io/api/auth/signup",
+                url: "https://d15b-2603-3003-2900-2200-d0f5-b976-a79f-ef7a.ngrok.io/api/auth/signup",
                 timeout: 100000,
                 data: {
                   firstname: values.firstName,

@@ -1,6 +1,8 @@
 import * as Font from "expo-font";
 
-export default useFonts = async () =>
+const useFonts = async () =>
   await Font.loadAsync({
-    "PTSansNarrow-Regular": require("./fonts/PTSansNarrow-Regular.ttf"),
+    "PTSansNarrow-Regular": require("../assets/fonts/PTSansNarrow-Regular.ttf"),
   });
+
+export default useFonts;

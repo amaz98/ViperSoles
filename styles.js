@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { View, Text, Image } from "react-native";
 import Constants from "expo-constants";
+import { PTSansNarrow_400Regular } from "@expo-google-fonts/pt-sans-narrow";
 
 const StatusBarHeight = Constants.statusBarHeight;
 
@@ -30,7 +31,6 @@ export const LoginTitle = styled.Text`
   font-weight: bold;
   color: #000000;
   padding: 10px;
-  fontfamily: "PTSansNarrow-Regular";
 `;
 
 export const FormBox = styled.View`
@@ -94,3 +94,50 @@ export const EmailError = styled.Text`
   font-size: 15px;
   color: #ff3d22;
 `;
+
+export const UserNameContainer = styled.View`
+  margin-top: 10px;
+  width: 100%;
+  height: 70px;
+  resizeMode="none"
+  borderBottomWidth: 1.0;
+  borderWidth:0px;
+  borderColor: #000000;
+  borderRadius: 10px;
+  background-color: #FFFFFF;
+  justify-content: center;
+`;
+
+export const UserCredButtonContainer = styled.View`
+  width: 100%;
+  height: 30px;
+  display: "flex";
+`;
+
+export const UserCredMenuButtonContainer = styled.View`
+  width: 100%;
+  height: 800px;
+  background-color: #ffffff;
+  resizeMode="none"
+  borderWidth: 0px;
+  borderColor: #000000;
+  borderRadius: 30px;
+  margin-top:150px;
+`;
+
+export const MenuButton = styled.TouchableOpacity``;
+
+export const UserCredContainer = styled.View`
+  width: 80%;
+  height: 50px;
+  background-color: #000000;
+`;
+
+export const UserNameText = styled.Text`
+  font-family: "PTSansNarrow_400Regular";
+  font-size: 30px;
+  color: #000000;
+  text-align: center;
+`;
+
+export const UserOrderButton = styled.TouchableOpacity``;
