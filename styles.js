@@ -98,13 +98,7 @@ export const EmailError = styled.Text`
 export const UserNameContainer = styled.View`
   margin-top: 10px;
   width: 100%;
-  height: 70px;
-  resizeMode="none"
-  borderBottomWidth: 1.0;
-  borderWidth:0px;
-  borderColor: #000000;
-  borderRadius: 10px;
-  background-color: #FFFFFF;
+  height: 140px;
   justify-content: center;
 `;
 
@@ -119,24 +113,84 @@ export const UserCredMenuButtonContainer = styled.View`
   height: 800px;
   background-color: #ffffff;
   resizeMode="none"
-  borderWidth: 0px;
-  borderColor: #000000;
+  borderBottomWidth: 1.0;
+  borderWidth: 2px;
+  borderColor: #000;
   borderRadius: 30px;
-  margin-top:150px;
+  margin-top:30px;
 `;
 
 export const MenuButton = styled.TouchableOpacity``;
 
+export const CredentialButton = styled.TouchableOpacity`
+  display: flex;
+  align-items: center;
+  margin-top: 80px;
+`;
+
 export const UserCredContainer = styled.View`
   width: 80%;
-  height: 50px;
-  background-color: #000000;
+  height: 60px;
+  resizeMode="none"
+  borderBottomWidth: 1.0;
+  borderWidth: 1px;
+  borderColor: #000;
+  borderRadius: 30px;
+  background-color: #FFFFFF;
+  justify-content:center;
+  flexDirection: 'row';
+  shadowColor: '#000000',
+  shadowOpacity: 0.4,
+
+`;
+
+export const UserCredContainerText = styled.Text`
+  font-family: "PTSansNarrow_400Regular";
+  font-size: 20px;
+  text-align: center;
 `;
 
 export const UserNameText = styled.Text`
   font-family: "PTSansNarrow_400Regular";
-  font-size: 30px;
-  color: #000000;
+  font-size: 45px;
+  color: #fff;
+  margin-left: 30px;
+`;
+
+export const SneakerScreenTitle = styled.Text`
+  font-family: "PTSansNarrow_400Regular";
+  font-size: 45px;
+  color: #000;
+  margin-left: 20px;
+  margin-top: 20px;
+`;
+
+export const ProductCircle = styled.TouchableOpacity`
+  width: 150px;
+  height: 200px;
+  border-radius: 20px;
+  border-width: 1px;
+  border-color: #000;
+  margin-bottom: 20px;
+`;
+
+export const SneakerPageImage = styled.Image`
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+`;
+
+export const HundredImage = styled.ImageBackground`
+  height: 100%;
+  width: 100%;
+`;
+
+export const HundredImageText = styled.Text`
+  font-family: "PTSansNarrow_400Regular";
+  color: #fff;
+  font-size: 50px;
+  font-weight: bold;
+  left: 10px;
   text-align: center;
 `;
 

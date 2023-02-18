@@ -11,43 +11,131 @@ import {
   UserCredButtonContainer,
   UserCredMenuButtonContainer,
   UserCredContainer,
+  CredentialButton,
+  UserCredContainerText,
 } from "./styles.js";
 import useFonts from "./hooks/useFonts";
 import { Shadow } from "react-native-shadow-2";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import {
+  Ionicons,
+  MaterialIcons,
+  AntDesign,
+  FontAwesome5,
+} from "@expo/vector-icons";
 
-const UserPage = () => {
+const UserPage = ({ navigation }) => {
+  const { logout } = useContext(ContextCredentials);
   return (
     <StyledContainer>
       <Shadow
         style={{ flex: 1 }}
         offset={[0, 20]}
         stretch={true}
-        distance={600}
-        startColor={"#9FFF87"}
+        distance={900}
+        startColor={"#525252"}
       >
         <UserCredButtonContainer>
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <MenuButton style={{}}>
-              <Ionicons name="ios-menu-sharp" size={20} color={"#000000"} />
+            <MenuButton onPress={() => navigation.openDrawer()} style={{}}>
+              <Ionicons name="ios-menu-sharp" size={20} color={"#fff"} />
             </MenuButton>
-            <MenuButton style={{}}>
-              <MaterialIcons name="logout" size={20} color={"#000000"} />
+            <MenuButton onPress={() => logout()} style={{}}>
+              <MaterialIcons name="logout" size={20} color={"#fff"} />
             </MenuButton>
           </View>
         </UserCredButtonContainer>
         <UserNameContainer>
-          <UserNameText>Hello, Abdullah</UserNameText>
+          <UserNameText style={{}}>{`Hello,\n Abdullah`}</UserNameText>
         </UserNameContainer>
         <UserCredMenuButtonContainer>
-          <MenuButton>
-            <UserCredContainer></UserCredContainer>
-          </MenuButton>
-          <MenuButton></MenuButton>
-          <MenuButton></MenuButton>
-          <MenuButton></MenuButton>
+          <View style={{ height: 540 }}>
+            <CredentialButton>
+              <UserCredContainer>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                  }}
+                >
+                  <AntDesign
+                    name="inbox"
+                    size={20}
+                    style={{
+                      alignSelf: "center",
+                      position: "absolute",
+                      left: 10,
+                    }}
+                  />
+                  <UserCredContainerText>My Orders</UserCredContainerText>
+                </View>
+              </UserCredContainer>
+            </CredentialButton>
+            <CredentialButton>
+              <UserCredContainer>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                  }}
+                >
+                  <AntDesign
+                    name="hearto"
+                    size={20}
+                    style={{
+                      alignSelf: "center",
+                      position: "absolute",
+                      left: 10,
+                    }}
+                  />
+                  <UserCredContainerText>My Wishlist</UserCredContainerText>
+                </View>
+              </UserCredContainer>
+            </CredentialButton>
+            <CredentialButton>
+              <UserCredContainer>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                  }}
+                >
+                  <FontAwesome5
+                    name="house-user"
+                    size={20}
+                    style={{
+                      alignSelf: "center",
+                      position: "absolute",
+                      left: 10,
+                    }}
+                  />
+                  <UserCredContainerText>My Address</UserCredContainerText>
+                </View>
+              </UserCredContainer>
+            </CredentialButton>
+            <CredentialButton>
+              <UserCredContainer>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                  }}
+                >
+                  <MaterialIcons
+                    name="payment"
+                    size={20}
+                    style={{
+                      alignSelf: "center",
+                      position: "absolute",
+                      left: 10,
+                    }}
+                  />
+                  <UserCredContainerText>Payment Info</UserCredContainerText>
+                </View>
+              </UserCredContainer>
+            </CredentialButton>
+          </View>
         </UserCredMenuButtonContainer>
       </Shadow>
     </StyledContainer>

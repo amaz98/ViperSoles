@@ -9,7 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 const Home = ({ navigation }) => {
   //const navigation = useNavigation();
   const handlePress = () => {
-    navigation.navigate("UserPage");
+    navigation.navigate("My Account");
   };
   const { logout } = useContext(ContextCredentials);
   const [userName, setUserName] = useState("");
